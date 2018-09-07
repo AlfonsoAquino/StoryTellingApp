@@ -84,9 +84,15 @@ public class SequenceViewAdapter extends RecyclerView.Adapter<SequenceViewAdapte
                         if (x){
                             db.addStatistica(idUtente,String.valueOf(mData.get(0).getIdAlbum()),"1","0");
                             Toast.makeText(mContext, "Corretto!!!!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(mContext, SequenceActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            mContext.startActivity(intent);
                         }else{
                             db.addStatistica(idUtente,String.valueOf(mData.get(0).getIdAlbum()),"0","1");
                             Toast.makeText(mContext, "Sbagliato!!!!", Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(mContext, SequenceActivity.class);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            mContext.startActivity(intent);
                         }
                     }
                 }

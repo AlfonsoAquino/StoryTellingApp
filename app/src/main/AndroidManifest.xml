@@ -29,6 +29,7 @@
         <activity android:name=".SequenceActivity" />
         <activity android:name=".StoryGameActivity" />
         <activity android:name=".SelectionActivity" />
+        <activity android:name=".SequenceGameActivity"/>
     </application>
 
 </manifest>

@@ -3,6 +3,7 @@ package com.example.pasquale.storytellingapp;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.v7.app.AppCompatActivity;
@@ -26,6 +27,8 @@ public class SelectionActivity extends AppCompatActivity {
     private ImageView img2;
     private ArrayList<Vignetta> vignetta;
     private int tipo;
+    SQLiteHandler db;
+    String idUtente;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -34,6 +37,10 @@ public class SelectionActivity extends AppCompatActivity {
         img1 = (ImageView) findViewById(R.id.vignetta1);
         img2 = (ImageView) findViewById(R.id.vignetta2);
         txt= (TextView) findViewById(R.id.txtSelection);
+
+        db=new SQLiteHandler(getApplicationContext());
+        SharedPreferences settings = getSharedPreferences(Config.PREFS_NAME, 0);
+        idUtente = settings.getString("idUtente", null);
 
         //##### Array with the img #####
         Intent intent = getIntent();
@@ -105,6 +112,7 @@ public class SelectionActivity extends AppCompatActivity {
 
 
     public void showCorrect() {
+        db.addStatistica(idUtente,String.valueOf(vignetta.get(0).getIdAlbum()),"1","0");
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {
@@ -112,6 +120,7 @@ public class SelectionActivity extends AppCompatActivity {
                     case DialogInterface.BUTTON_POSITIVE:
                         if(tipo==0){
                             //Yes button clicked
+
                             Toast.makeText(getApplicationContext(), "Corretto!"+tipo, Toast.LENGTH_LONG).show();
                             Intent intent = new Intent(getApplicationContext(), StoryActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -142,6 +151,7 @@ public class SelectionActivity extends AppCompatActivity {
 
 
     public void showWrong() {
+        db.addStatistica(idUtente,String.valueOf(vignetta.get(0).getIdAlbum()),"0","1");
         DialogInterface.OnClickListener dialogClickListener = new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialog, int which) {

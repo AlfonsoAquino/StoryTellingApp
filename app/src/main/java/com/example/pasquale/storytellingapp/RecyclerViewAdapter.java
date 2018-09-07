@@ -66,6 +66,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
                     // passing data to the album activity
                     intent.putExtra("tipo", mData.get(position).getTipo());
+                    Log.i("ajsoidaosdoaisjdoaisdjo",mData.get(position).getTipo()+"-----------<");
                     intent.putParcelableArrayListExtra("arrayVignette", mData.get(position).getVignette());
                     // start the activity
                     mContext.startActivity(intent);

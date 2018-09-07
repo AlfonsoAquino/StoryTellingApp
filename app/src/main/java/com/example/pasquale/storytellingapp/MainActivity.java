@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         setContentView(R.layout.activity_main);
 
-        if(checkPermission()) {
+//        if(checkPermission()) {
             db = new SQLiteHandler(getApplicationContext());
             vignette = new ArrayList<Vignetta>();
             albums = new ArrayList<Album>();
@@ -60,7 +60,7 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
             //se non loggato allora loginActivity
             boolean log = settings.contains("idUtente");
-
+            Log.i(".......><","logged?"+log);
             if (!log) {
 
                 //the app is being launched for first time, do something
@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //record the fact that the app has been started at least once
                 settings.edit().putBoolean("my_first_time", false).commit();
-            } else {
+//            } else {
 
                 albums = db.getAlbumDetails();
                 vignette = db.getVignettaDetails();
@@ -131,11 +131,11 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
             });
-        }else{
-            requestPermission();
-            finish();
-
-        }
+//        }else{
+//            requestPermission();
+//            finish();
+//
+//        }
     }
     //this methods are semplified with editor if error check this
     protected boolean isOnline() {

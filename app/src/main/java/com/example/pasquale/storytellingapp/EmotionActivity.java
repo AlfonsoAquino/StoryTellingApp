@@ -28,7 +28,6 @@ public class EmotionActivity extends AppCompatActivity {
 
         albums=db.getAlbumDetails();
         vignette=db.getVignettaDetails();
-        Log.i("lakalkj------>","apsdadpoasdoapasdpapooipoipsodapd"+emozioni.size());
         for(Album a:albums){
             //seleziono solo gli album destinati allo storyTelling
             vignetteAlbum= new ArrayList<Vignetta>();
@@ -40,7 +39,6 @@ public class EmotionActivity extends AppCompatActivity {
                 Album album= new Album(a.getId(), a.getNome(), a.getPath(), a.getTipo());
                 album.setVignette(vignetteAlbum);
                 emozioni.add(album);
-                Log.i("lakalkj------>","apsdadpoasdoapasdpasodapd"+emozioni.size());
             }
         }
 

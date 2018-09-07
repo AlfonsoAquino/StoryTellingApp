@@ -111,7 +111,7 @@ public class LoadingActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),
                                 errorMsg, Toast.LENGTH_LONG).show();
                         //tornare alla main o da qualche altra parte
-
+                        finalTask();
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

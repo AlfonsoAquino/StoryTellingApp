@@ -20,6 +20,7 @@ public class StoryGameActivity extends AppCompatActivity {
     public ImageView imgV;
     public ImageView imgNext;
     public ImageView imgBack;
+    public static int NOVIGNETTE=9;
     int temp=0;
     int size;
     int tipo;
@@ -30,7 +31,9 @@ public class StoryGameActivity extends AppCompatActivity {
 
         // get array Vignette
         vignette=getIntent().getParcelableArrayListExtra("arrayVignette");
-        tipo=Integer.parseInt(getIntent().getStringExtra("tipo"));
+        tipo=getIntent().getIntExtra("tipo",NOVIGNETTE);
+        if(tipo==NOVIGNETTE)
+            finish();
         imgV = (ImageView)findViewById(R.id.imgV);
         imgNext = (ImageView)findViewById(R.id.imgNext);
         imgBack = (ImageView)findViewById(R.id.imgBack);

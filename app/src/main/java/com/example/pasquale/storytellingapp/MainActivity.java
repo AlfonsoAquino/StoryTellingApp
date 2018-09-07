@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity {
 
                 //record the fact that the app has been started at least once
                 settings.edit().putBoolean("my_first_time", false).commit();
-//            } else {
+            } else {
 
                 albums = db.getAlbumDetails();
                 vignette = db.getVignettaDetails();

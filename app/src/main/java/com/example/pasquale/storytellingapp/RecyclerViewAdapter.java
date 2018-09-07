@@ -47,30 +47,39 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, final int position) {
-        String fileName = String.valueOf(mData.get(position).getId())+".jpg";
+        String fileName = "41.jpg";
         String completePath = Environment.getExternalStorageDirectory()+"/"+Config.destAlbumPrev+"/"+fileName;
 
         File file = new File(completePath);
         Uri imageUri = Uri.fromFile(file);
         Log.d(TAG, "onBindViewHolder: ----------------------------------------- ci sono");
         if(file.exists()) {
-
             holder.album_title.setText(mData.get(position).getNome());
             Log.d(TAG, "onBindViewHolder: ----------------------------------------- entro"+mData.get(position).getNome());
             Glide.with(mContext).load(imageUri).into(holder.album_cover);
             holder.cardView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+//                    if(mData.get(position).getTipo()==2) {
+//                        Intent intent = new Intent(mContext, SequenceGameActivity.class);
+//
+//                        // passing data to the album activity
+//                        intent.putExtra("tipo", mData.get(position).getTipo());
+//                        Log.i("ajsoidaosdoaisjdoaisdjo",mData.get(position).getTipo()+"-----------<");
+//                        intent.putParcelableArrayListExtra("arrayVignette", mData.get(position).getVignette());
+//                        // start the activity
+//                        mContext.startActivity(intent);
+//
+//                    }else {
+                        Intent intent = new Intent(mContext, StoryGameActivity.class);
 
-                    Intent intent = new Intent(mContext, StoryGameActivity.class);
-
-                    // passing data to the album activity
-                    intent.putExtra("tipo", mData.get(position).getTipo());
-                    Log.i("ajsoidaosdoaisjdoaisdjo",mData.get(position).getTipo()+"-----------<");
-                    intent.putParcelableArrayListExtra("arrayVignette", mData.get(position).getVignette());
-                    // start the activity
-                    mContext.startActivity(intent);
-
+                        // passing data to the album activity
+                        intent.putExtra("tipo", mData.get(position).getTipo());
+                        Log.i("ajsoidaosdoaisjdoaisdjo", mData.get(position).getTipo() + "-----------<");
+                        intent.putParcelableArrayListExtra("arrayVignette", mData.get(position).getVignette());
+                        // start the activity
+                        mContext.startActivity(intent);
+//                    }
                 }
             });
         }
